@@ -13,7 +13,7 @@ export default function Footer() {
 
         <div className="flex items-center gap-3">
           <span className="text-quaternary hidden md:inline">v.2025.12</span>
-          <ExternalLink href="https://github.com/nnayz/me">source</ExternalLink>
+          <ExternalLink href="https://github.com/nsrul/nasrul.info">source</ExternalLink>
         </div>
       </div>
     </footer>

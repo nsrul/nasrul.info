@@ -39,7 +39,7 @@ export const actions: Action[] = [
   // {
   //   name: "GitHub",
   //   keywords: "github",
-  //   href: "https://github.com/nnayz",
+  //   href: "https://github.com/nsrul",
   //   section: "Socials",
   //   color: "#61C167",
   //   iconColor: "#0D2805",
@@ -102,7 +102,7 @@ export const Socials: Action[] = [
     name: "GitHub",
     keywords: "github",
     perform: () => {
-      window.open("https://github.com/nnayz");
+      window.open("https://github.com/nsrul");
     },
     section: "Socials",
   },

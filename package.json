@@ -20,8 +20,8 @@
     "@calcom/embed-react": "^1.5.3",
     "@heroicons/react": "^2.0.18",
     "@mdx-js/rollup": "^3.1.1",
-    "@tanstack/react-router": "^1.170.25",
-    "@tanstack/react-start": "^1.168.42",
+    "@tanstack/react-router": "1.170.41",
+    "@tanstack/react-start": "1.168.60",
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -78,7 +78,7 @@
   },
   "homepage": "https://nasrul.info",
   "bugs": {
-    "url": "https://github.com/nasrulhuda/nasrul.info/issues"
+    "url": "https://github.com/nsrul/nasrul.info/issues"
   },
   "browserslist": [
     ">0.2%",

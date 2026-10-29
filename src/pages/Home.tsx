@@ -172,8 +172,8 @@ function Contact() {
           website="LinkedIn"
         />
         <ContactLink
-          href="https://github.com/nnayz"
-          title="@nnayz"
+          href="https://github.com/nsrul"
+          title="@nsrul"
           website="GitHub"
         />
         <ContactLink

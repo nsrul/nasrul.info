@@ -23,7 +23,7 @@ export default function WritingPost({ slug }: { slug: string }) {
         type="application/ld+json"
       />
       <ArticleLayout
-        editUrl={`https://github.com/nnayz/me/edit/main/content/writing/${slug}.mdx`}
+        editUrl={`https://github.com/nsrul/nasrul.info/edit/main/content/writing/${slug}.mdx`}
         image={post.image}
         key={slug}
         metadata={

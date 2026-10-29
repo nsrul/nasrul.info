@@ -28,7 +28,7 @@ const pages = [
 const EMAIL = 'nasrul.huda.ds@gmail.com';
 
 const socials = [
-  { href: 'https://github.com/nnayz', icon: Github, label: 'github' },
+  { href: 'https://github.com/nsrul', icon: Github, label: 'github' },
   {
     href: 'https://www.linkedin.com/in/nasrul-hudaa/',
     icon: Linkedin,

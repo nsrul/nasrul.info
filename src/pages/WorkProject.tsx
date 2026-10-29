@@ -10,7 +10,7 @@ export default function WorkProject({ slug }: { slug: string }) {
   if (!highlight) return null;
   return (
     <ArticleLayout
-      editUrl={`https://github.com/nnayz/me/edit/main/content/highlights/${slug}.mdx`}
+      editUrl={`https://github.com/nsrul/nasrul.info/edit/main/content/highlights/${slug}.mdx`}
       key={slug}
       metadata={highlightMeta(highlight) || kindLabels[highlight.kind]}
       title={highlight.title}
