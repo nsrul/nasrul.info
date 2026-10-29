@@ -84,7 +84,7 @@ export const workDescription = (highlight: Highlight): string =>
 const workLinks: Record<string, string> = {
   mldrills: 'https://mldrills.com',
   syntwin: 'https://syntwin.ai',
-  zeus: 'https://nnayz.github.io/zeus',
+  zeus: 'https://nsrul.github.io/zeus',
 };
 
 export const workHref = (slug: string): string | undefined => workLinks[slug];

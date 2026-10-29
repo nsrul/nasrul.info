@@ -164,7 +164,7 @@ export default function Work() {
               <span className="bullet" />
             </span>
             <span className="label work-line">
-              <ExternalLink href="https://github.com/nnayz">
+              <ExternalLink href="https://github.com/nsrul">
                 more projects on github
               </ExternalLink>
             </span>
