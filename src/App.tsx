@@ -1,9 +1,9 @@
+import '@/assets/styles/portfolio.css';
 import { cn } from '@/lib/className';
 import AnalyticsTracker from '@components/AnalyticsTracker';
 import AudioToggle from '@components/AudioToggle';
 import Background from '@components/Background';
 import CustomCursor from '@components/CustomCursor';
-import GridNotes from '@components/GridNotes';
 import MenuOverlay from '@components/MenuOverlay';
 import Navbar from '@components/Navbar';
 import { useRouterState } from '@tanstack/react-router';
@@ -14,7 +14,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
-  const isHome = pathname === '/';
+  if (pathname === '/') {
+    return (
+      <div className="portfolio-shell">
+        {children}
+        <Analytics />
+        <AnalyticsTracker />
+      </div>
+    );
+  }
+
   const isArticle =
     pathname.startsWith('/writing/') ||
     pathname.startsWith('/highlights/') ||
@@ -29,13 +38,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div
       className={cn('relative min-h-screen', isEditorial && 'article-shell')}
     >
-      {isEditorial ? (
-        <div className="article-surface" />
-      ) : (
-        <Background showGrid={isHome} />
-      )}
+      {isEditorial ? <div className="article-surface" /> : <Background />}
       <CustomCursor />
-      {isHome && <GridNotes />}
       <div aria-hidden className="nav-fade" />
       <div aria-hidden className="page-frame-fade-bottom" />
       <Navbar />
@@ -60,12 +64,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 }
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+
   return (
     <ThemeProvider
       attribute="class"
       defaultTheme="dark"
       disableTransitionOnChange
       enableSystem={false}
+      forcedTheme={pathname === '/' ? 'light' : undefined}
     >
       {children}
     </ThemeProvider>

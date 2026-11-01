@@ -1,0 +1,237 @@
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/static/fonts/instrument-sans-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/static/fonts/instrument-sans-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+html:has(.portfolio-shell),
+html:has(.portfolio-shell) body {
+  max-height: none;
+  background: #f6f6f6;
+  color: #000;
+  font-size: 100%;
+}
+
+@media (min-width: 901px) {
+  html:has(.portfolio-shell),
+  html:has(.portfolio-shell) body {
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+.portfolio-shell {
+  height: 100dvh;
+  overflow: hidden;
+  background: #f6f6f6;
+  color: #000;
+}
+
+.portfolio {
+  --paper: #f6f6f6;
+  --ink: #000;
+  --media-placeholder: #e4e4e4;
+  --focus: #1a56ff;
+  --pad: 1.95vw;
+  /* Same size as jdhooge.com body copy: 1.2rem of a root tied to the short side. */
+  --fs: min(1.728vw, 1.728dvh);
+
+  display: grid;
+  grid-template-columns: 25% minmax(0, 1fr);
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family:
+    'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: var(--fs);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  cursor: auto;
+}
+
+.portfolio .pane-a,
+.portfolio .pane-b {
+  min-height: 0;
+  padding: var(--pad);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.portfolio h1,
+.portfolio h2,
+.portfolio p,
+.portfolio time {
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.portfolio h1,
+.portfolio .pane-a p {
+  margin-bottom: 1.25em;
+}
+
+.portfolio a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  transition: none;
+}
+
+.portfolio a:hover,
+.portfolio a:active {
+  color: inherit;
+  text-decoration-line: underline;
+}
+
+.portfolio a:focus {
+  outline: none;
+}
+
+.portfolio a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.portfolio .portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  margin-top: 2.5em;
+  object-fit: cover;
+  background: var(--media-placeholder);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.portfolio .entry {
+  display: grid;
+  grid-template-areas:
+    'title year'
+    'copy media';
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.115fr);
+  column-gap: 2.3vw;
+  align-items: start;
+  margin-bottom: 5.4vw;
+}
+
+.portfolio .entry h2 {
+  grid-area: title;
+  margin-bottom: 1.25em;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.portfolio .year {
+  grid-area: year;
+  margin-bottom: 1.25em;
+}
+
+.portfolio .copy {
+  grid-area: copy;
+  min-width: 0;
+}
+
+.portfolio .copy p + p {
+  margin-top: 1.25em;
+}
+
+.portfolio .media {
+  grid-area: media;
+  min-width: 0;
+}
+
+.portfolio .media img,
+.portfolio .media video,
+.portfolio .media-fallback {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--media-placeholder);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .portfolio-shell {
+    height: auto;
+    overflow: visible;
+  }
+
+  .portfolio {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .portfolio .pane-a,
+  .portfolio .pane-b {
+    height: auto;
+    padding: 16px;
+    overflow: visible;
+  }
+
+  .portfolio .pane-b {
+    padding-top: 0;
+  }
+
+  .portfolio .entry {
+    grid-template-areas:
+      'title year'
+      'media media'
+      'copy copy';
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 16px;
+    row-gap: 12px;
+    margin-bottom: 64px;
+  }
+
+  .portfolio .entry h2,
+  .portfolio .year {
+    margin-bottom: 0;
+  }
+}
+
+/* Phone portrait and short landscape use the same boost as jdhooge.com. */
+@media (max-aspect-ratio: 4/5) {
+  .portfolio {
+    --fs: min(3.97824vw, 3.97824dvh);
+  }
+}
+
+@media (min-aspect-ratio: 2/3) and (max-height: 500px) {
+  .portfolio {
+    --fs: min(5.11488vw, 5.11488dvh);
+  }
+}
