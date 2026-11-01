@@ -11,8 +11,6 @@ function A({ children, href }: { children: ReactNode; href: string }) {
 // Set when a 3:4 photo is at public/static/images/portrait.jpg.
 export const portrait: { alt: string; src: string } | null = null;
 
-export const contact = [{ href: 'mailto:hi@nasrul.info', label: 'Email' }];
-
 export type Project = {
   alt: string;
   copy: ReactNode[];

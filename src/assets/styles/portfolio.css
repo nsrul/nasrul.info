@@ -48,6 +48,10 @@ html:has(.portfolio-shell) body {
 .portfolio {
   --paper: #f6f6f6;
   --ink: #000;
+  --link: #2158e8;
+  --link-highlight: #edf5ff;
+  --name: #cc0074;
+  --name-highlight: #ffe8f3;
   --media-placeholder: #e4e4e4;
   --focus: #1a56ff;
   --pad: 1.95vw;
@@ -112,6 +116,63 @@ html:has(.portfolio-shell) body {
   text-decoration-line: underline;
 }
 
+.portfolio h1 a,
+.portfolio h1 a:hover,
+.portfolio h1 a:active {
+  color: var(--name);
+  background-color: var(--name-highlight);
+  text-decoration: none;
+  font-style: italic;
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+}
+
+.portfolio p a,
+.portfolio p a:hover,
+.portfolio p a:active {
+  color: var(--link);
+  background-color: var(--link-highlight);
+  text-decoration-color: var(--link);
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.portfolio nav ul {
+  margin: 0 0 1.25em;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.portfolio nav li {
+  width: fit-content;
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+  color: var(--name);
+  background-color: var(--name-highlight);
+  font-style: italic;
+}
+
+.portfolio nav a,
+.portfolio nav a:hover,
+.portfolio nav a:active {
+  color: inherit;
+  background: none;
+  text-decoration: none;
+  font-style: inherit;
+  font-weight: 500;
+  padding: 0;
+  border-radius: 0;
+}
+
+.portfolio nav a[aria-current='page'] {
+  font-weight: 700;
+}
+
 .portfolio a:focus {
   outline: none;
 }
@@ -170,6 +231,47 @@ html:has(.portfolio-shell) body {
   min-width: 0;
 }
 
+.portfolio .lede {
+  margin-bottom: 2.5em;
+}
+
+.portfolio .note {
+  margin-bottom: 2.5em;
+}
+
+.portfolio .note h2,
+.portfolio .note .year {
+  display: inline;
+}
+
+.portfolio .note h2 {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.portfolio .note .year {
+  margin-left: 0.6em;
+}
+
+.portfolio .note .copy {
+  margin-top: 1.25em;
+}
+
+.portfolio .note h2 a,
+.portfolio .note h2 a:hover,
+.portfolio .note h2 a:active {
+  color: var(--link);
+  background-color: var(--link-highlight);
+  text-decoration-color: var(--link);
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+}
+
+.portfolio .booking {
+  height: 70dvh;
+  min-height: 28em;
+}
+
 .portfolio .media img,
 .portfolio .media video,
 .portfolio .media-fallback {
@@ -203,6 +305,7 @@ html:has(.portfolio-shell) body {
   }
 
   .portfolio .pane-b {
+    min-height: 100dvh;
     padding-top: 0;
   }
 

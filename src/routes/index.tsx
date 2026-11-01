@@ -15,7 +15,8 @@ export const Route = createFileRoute('/')({
     ],
     meta: [
       {
-        content: 'Nasrul Huda is an AI engineer based in Hamburg.',
+        content:
+          'Nasrul Huda is an AI/ML engineer based in Hamburg, working at the intersection of AI, software engineering, and research.',
         name: 'description',
       },
       { content: '#f6f6f6', name: 'theme-color' },
