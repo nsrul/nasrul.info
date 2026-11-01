@@ -1,5 +1,6 @@
 import { portrait } from '@lib/portfolio';
-import { useEffect, type MouseEvent, type RefObject } from 'react';
+import { useTheme } from 'next-themes';
+import { useEffect, useState, type MouseEvent, type RefObject } from 'react';
 
 const scrollKeys = new Set([
   'ArrowDown',
@@ -72,6 +73,7 @@ export default function IdentityPane({
 }) {
   return (
     <aside className="pane-a">
+      <ThemeSwitch />
       <h1>
         <a href="/">Nasrul Huda</a>
       </h1>
@@ -147,5 +149,62 @@ export default function IdentityPane({
         <div aria-hidden className="portrait" />
       )}
     </aside>
+  );
+}
+
+function ThemeSwitch() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+  const dark = ready && resolvedTheme === 'dark';
+
+  return (
+    <button
+      aria-pressed={dark}
+      className="theme-toggle"
+      onClick={() => setTheme(dark ? 'light' : 'dark')}
+      type="button"
+    >
+      <span className="sr-only">
+        {dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      </span>
+      {dark ? <SunIcon /> : <MoonIcon />}
+    </button>
+  );
+}
+
+function SunIcon() {
+  return (
+    <svg aria-hidden viewBox="0 0 16 16">
+      <circle
+        cx="8"
+        cy="8"
+        fill="none"
+        r="2.4"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <path
+        d="M8 1.2v2M8 12.8v2M1.2 8h2M12.8 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="square"
+        strokeWidth="1.4"
+      />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg aria-hidden viewBox="0 0 16 16">
+      <path
+        d="M8.6 1.5a5.2 5.2 0 1 0 5.9 7.6A4.4 4.4 0 0 1 8.6 1.5z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="miter"
+        strokeWidth="1.4"
+      />
+    </svg>
   );
 }

@@ -8,7 +8,8 @@ import MenuOverlay from '@components/MenuOverlay';
 import Navbar from '@components/Navbar';
 import { useRouterState } from '@tanstack/react-router';
 import { Analytics } from '@vercel/analytics/react';
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider, useTheme } from 'next-themes';
+import { useEffect } from 'react';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({
@@ -18,6 +19,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     return (
       <div className="portfolio-shell">
         {children}
+        <PortfolioThemeColor />
         <Analytics />
         <AnalyticsTracker />
       </div>
@@ -63,20 +65,24 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function AppProviders({ children }: { children: React.ReactNode }) {
-  const pathname = useRouterState({
-    select: (state) => state.location.pathname,
-  });
+function PortfolioThemeColor() {
+  const { resolvedTheme } = useTheme();
+  useEffect(() => {
+    const color = resolvedTheme === 'dark' ? '#242220' : '#f6f6f6';
+    document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+      meta.setAttribute('content', color);
+    });
+  }, [resolvedTheme]);
+  return null;
+}
 
+export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="light"
       disableTransitionOnChange
       enableSystem={false}
-      forcedTheme={
-        pathname === '/' || pathname === '/resources' ? 'light' : undefined
-      }
     >
       {children}
     </ThemeProvider>

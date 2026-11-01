@@ -9,6 +9,7 @@ import { trackEvent } from '@lib/analytics';
 import { projects } from '@lib/portfolio';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { allWritings } from 'content-collections';
+import { useTheme } from 'next-themes';
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
 
 const openSource = [
@@ -251,7 +252,8 @@ function MeetingPanel() {
 }
 
 function Booking() {
-  const theme = 'light' as const;
+  const { resolvedTheme } = useTheme();
+  const theme = resolvedTheme === 'dark' ? 'dark' : 'light';
   const [cal, setCal] = useState<typeof import('@calcom/embed-react') | null>(
     null,
   );
