@@ -40,9 +40,9 @@ const Writing = defineCollection({
         datePublished: doc.publishedAt,
         description: doc.summary,
         headline: doc.title,
-        image: doc.image
-          ? `https://nasrul.info${doc.image}`
-          : `https://nasrul.info/static/images/og.png`,
+        ...(doc.image
+          ? { image: `https://nasrul.info${doc.image}` }
+          : {}),
         url: `https://nasrul.info/writing/${doc._meta.path}`,
       },
       body: {

@@ -1,43 +1,15 @@
+import IdentityPane, {
+  panels,
+  sections,
+  usePaneKeyboard,
+  type PanelId,
+} from '@components/IdentityPane';
 import ProjectMedia from '@components/ProjectMedia';
 import { trackEvent } from '@lib/analytics';
-import { portrait, projects } from '@lib/portfolio';
+import { projects } from '@lib/portfolio';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { allWritings } from 'content-collections';
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type MouseEvent,
-} from 'react';
-
-const scrollKeys = new Set([
-  'ArrowDown',
-  'ArrowUp',
-  'End',
-  'Home',
-  'PageDown',
-  'PageUp',
-  ' ',
-]);
-
-const panels = [
-  'writing',
-  'projects',
-  'open-source',
-  'photography',
-  'meeting',
-] as const;
-
-type PanelId = (typeof panels)[number];
-
-const sections: { id: PanelId; label: string }[] = [
-  { id: 'writing', label: 'Writing' },
-  { id: 'projects', label: 'Featured Projects' },
-  { id: 'open-source', label: 'Open Source' },
-  { id: 'photography', label: 'Photography' },
-  { id: 'meeting', label: 'Book a meeting' },
-];
+import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
 
 const openSource = [
   {
@@ -135,43 +107,7 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const pane = paneRef.current;
-    if (!pane) return;
-
-    const onKey = (event: KeyboardEvent) => {
-      if (event.altKey || event.ctrlKey || event.metaKey) return;
-      if (!scrollKeys.has(event.key)) return;
-      if (window.matchMedia('(max-width: 900px)').matches) return;
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-      if (target.closest('input, textarea, select, [contenteditable="true"]'))
-        return;
-
-      const scroller = target.closest('.pane-a, .pane-b') ?? pane;
-      if (!(scroller instanceof HTMLElement)) return;
-
-      const page = scroller.clientHeight * 0.85;
-      const top =
-        event.key === 'ArrowDown'
-          ? 80
-          : event.key === 'ArrowUp'
-            ? -80
-            : event.key === 'PageDown' || event.key === ' '
-              ? page
-              : event.key === 'PageUp'
-                ? -page
-                : event.key === 'Home'
-                  ? -scroller.scrollTop
-                  : scroller.scrollHeight;
-
-      scroller.scrollBy({ top });
-      event.preventDefault();
-    };
-
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  usePaneKeyboard(paneRef);
 
   const showPanel = useCallback(() => {
     const pane = paneRef.current;
@@ -203,78 +139,7 @@ export default function Home() {
 
   return (
     <div className="portfolio">
-      <aside className="pane-a">
-        <h1>
-          <a href="/">Nasrul Huda</a>
-        </h1>
-        <p>
-          I’m an AI/ML Engineer based in Hamburg. Currently, I work at{' '}
-          <a href="https://pharos-labs.com" rel="noreferrer">
-            Pharos Labs
-          </a>{' '}
-          and am pursuing a Master’s in Data Science and AI at Universität
-          Hamburg.
-        </p>
-        <p>
-          Alongside my studies, I've also worked as a Research Assistant at the
-          university. Previously, I was an AI Engineer at{' '}
-          <a href="https://syntwin.ai" rel="noreferrer">
-            SynTwin
-          </a>
-          . I completed my Bachelor’s in Computer Science at Jamia Millia
-          Islamia, New Delhi.
-        </p>
-        <p>
-          Find me on{' '}
-          <a href="https://www.linkedin.com/in/nasrul-hudaa/" rel="noreferrer">
-            LinkedIn
-          </a>
-          ,{' '}
-          <a href="https://github.com/nsrul" rel="noreferrer">
-            GitHub
-          </a>
-          , or{' '}
-          <a href="https://x.com/nnasrrull" rel="noreferrer">
-            X
-          </a>
-          . You can also{' '}
-          <a href="https://resume.nasrul.info" rel="noreferrer">
-            view my résumé
-          </a>{' '}
-          or <a href="mailto:hi@nasrul.info">get in touch</a>.
-        </p>
-        <nav aria-label="Sections">
-          <ul>
-            {sections.map((section) => (
-              <li key={section.id}>
-                <a
-                  aria-current={panel === section.id ? 'page' : undefined}
-                  href={`#${section.id}`}
-                  onClick={(event) => onSelect(event, section.id)}
-                >
-                  {section.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <p>
-          <em>
-            Last updated: <time dateTime="2026-11-01">1 November 2026</time>
-          </em>
-        </p>
-        {portrait ? (
-          <img
-            alt={portrait.alt}
-            className="portrait"
-            height={1600}
-            src={portrait.src}
-            width={1200}
-          />
-        ) : (
-          <div aria-hidden className="portrait" />
-        )}
-      </aside>
+      <IdentityPane current={panel} onSelect={onSelect} />
 
       <main aria-label={label} className="pane-b" ref={paneRef}>
         {panel === 'writing' ? <WritingPanel /> : null}
@@ -310,32 +175,32 @@ function ProjectsPanel() {
 
 function WritingPanel() {
   const posts = writingPosts();
-  if (posts.length === 0) {
-    return (
-      <p className="lede">
+
+  return (
+    <>
+      {posts.map((post) => (
+        <article className="note" key={post.slug}>
+          <h2>
+            <a href={`/writing/${post.slug}`}>{post.title}</a>
+          </h2>
+          <p className="year">
+            <time dateTime={post.publishedAt}>
+              {formatWrittenOn(post.publishedAt)}
+            </time>
+          </p>
+          {post.summary ? (
+            <div className="copy">
+              <p>{post.summary}</p>
+            </div>
+          ) : null}
+        </article>
+      ))}
+      <p className={posts.length ? undefined : 'lede'}>
         If you&apos;re interested in exploring the articles that inspire me and
         shape my thinking, check out <a href="/resources">Resources</a>.
       </p>
-    );
-  }
-
-  return posts.map((post) => (
-    <article className="note" key={post.slug}>
-      <h2>
-        <a href={`/writing/${post.slug}`}>{post.title}</a>
-      </h2>
-      <p className="year">
-        <time dateTime={post.publishedAt}>
-          {formatWrittenOn(post.publishedAt)}
-        </time>
-      </p>
-      {post.summary ? (
-        <div className="copy">
-          <p>{post.summary}</p>
-        </div>
-      ) : null}
-    </article>
-  ));
+    </>
+  );
 }
 
 function OpenSourcePanel() {

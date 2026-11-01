@@ -41,7 +41,7 @@ export const projects: Project[] = [
     year: '2026',
   },
   {
-    alt: 'MLdrills editor showing a solved machine-learning problem',
+    alt: '',
     copy: [
       <p key="body">
         MLdrills is a practice platform for machine-learning problems you solve
@@ -55,12 +55,11 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Product and engineering.</p>,
     ],
-    poster: '/static/images/work/mldrills.webp',
     title: 'MLdrills',
     year: '2026',
   },
   {
-    alt: 'SynTwin voice agent listening during a call',
+    alt: '',
     copy: [
       <p key="body">
         SynTwin is the platform and the agents that carry digital-twin workflows
@@ -73,7 +72,6 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: AI Engineer.</p>,
     ],
-    poster: '/static/images/work/syntwin.webp',
     title: 'SynTwin',
     year: '2026',
   },
@@ -135,7 +133,7 @@ export const projects: Project[] = [
     year: '2026',
   },
   {
-    alt: 'Pettoo homepage',
+    alt: '',
     copy: [
       <p key="body">
         Pettoo connects pet owners with services, bookings, and products in one
@@ -147,12 +145,11 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Software engineer.</p>,
     ],
-    poster: '/static/images/work/pettoo.webp',
     title: 'Pettoo',
     year: '2025',
   },
   {
-    alt: 'MyTorch repository readme',
+    alt: '',
     copy: [
       <p key="body">
         MyTorch is a small deep-learning library written to see what sits inside
@@ -166,12 +163,11 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Product and engineering.</p>,
     ],
-    poster: '/static/images/work/mytorch.webp',
     title: 'MyTorch',
     year: '2025',
   },
   {
-    alt: 'Discourse Analysis Tool Suite document view',
+    alt: '',
     copy: [
       <p key="body">
         The Discourse Analysis Tool Suite is a shared application for
@@ -188,7 +184,6 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Research Assistant.</p>,
     ],
-    poster: '/static/images/work/dats.webp',
     title: 'Discourse Analysis Tool Suite',
     year: '2025',
   },

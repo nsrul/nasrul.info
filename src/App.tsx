@@ -14,7 +14,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
-  if (pathname === '/') {
+  if (pathname === '/' || pathname === '/resources') {
     return (
       <div className="portfolio-shell">
         {children}
@@ -74,7 +74,9 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
       defaultTheme="dark"
       disableTransitionOnChange
       enableSystem={false}
-      forcedTheme={pathname === '/' ? 'light' : undefined}
+      forcedTheme={
+        pathname === '/' || pathname === '/resources' ? 'light' : undefined
+      }
     >
       {children}
     </ThemeProvider>

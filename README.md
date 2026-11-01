@@ -2,6 +2,6 @@
 
 Personal corner of the internet. Minimal design, quirky interactions.
 
-[![nasrul.info homepage](public/static/images/screenshot.png)](https://nasrul.info)
+[nasrul.info](https://nasrul.info)
 
 MIT.

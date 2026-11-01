@@ -22,7 +22,6 @@ const pages = [
   { label: 'work', to: '/work' },
   { label: 'consulting', to: '/consulting' },
   { label: 'writing', to: '/writing' },
-  { label: 'resources', to: '/resources' },
 ] as const;
 
 const EMAIL = 'nasrul.huda.ds@gmail.com';
