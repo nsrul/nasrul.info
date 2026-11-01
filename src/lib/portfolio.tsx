@@ -41,7 +41,7 @@ export const projects: Project[] = [
     year: '2026',
   },
   {
-    alt: '',
+    alt: 'MLdrills practice screen',
     copy: [
       <p key="body">
         MLdrills is a practice platform for machine-learning problems you solve
@@ -55,11 +55,13 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Product and engineering.</p>,
     ],
+    poster: '/static/images/work/mldrills.png',
     title: 'MLdrills',
+    video: '/static/images/work/mldrills.mp4',
     year: '2026',
   },
   {
-    alt: '',
+    alt: 'SynTwin logo',
     copy: [
       <p key="body">
         SynTwin is the platform and the agents that carry digital-twin workflows
@@ -72,6 +74,7 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: AI Engineer.</p>,
     ],
+    poster: '/static/images/work/syntwin.png',
     title: 'SynTwin',
     year: '2026',
   },
