@@ -14,10 +14,17 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react
 
 const openSource = [
   {
-    href: 'https://github.com/nsrul/zeus',
+    href: 'https://github.com/nsrul/fleet',
     summary:
-      'Zeus is a native macOS workbench for running coding agents in parallel without losing their terminals.',
-    title: 'Zeus',
+      'Fleet is a macOS workspace for running installed coding-agent CLIs side by side, backed by a Rust daemon that owns the terminals.',
+    title: 'Fleet',
+    year: '2026',
+  },
+  {
+    href: 'https://github.com/nsrul/tally',
+    summary:
+      'Tally is a macOS menu bar app for watching LLM spend and subscription quotas against budgets.',
+    title: 'Tally',
     year: '2026',
   },
   {

@@ -23,21 +23,43 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    alt: '',
+    alt: 'Fleet window with two agent terminals and a diff panel for the focused session',
     copy: [
       <p key="body">
-        Zeus is a native macOS workbench for running coding agents in parallel
-        without losing their terminals. A background engine keeps each session
-        alive after the window closes, and a sidebar reduces the state to
-        working, waiting, or done.
+        Fleet is a macOS workspace for running installed coding-agent CLIs side
+        by side. A Rust daemon owns every agent process and its PTY, so closing
+        the window leaves the sessions running and the app reattaches when you
+        come back. Each pane is a real terminal, with a context panel that
+        follows the focused agent's working tree.
       </p>,
       <p key="link">
-        The <A href="https://nsrul.github.io/zeus">Zeus docs</A> cover the
-        workbench.
+        The <A href="https://github.com/nsrul/fleet">Fleet repository</A> has
+        the release and the architecture.
       </p>,
       <p key="role">My Role: Product and engineering.</p>,
     ],
-    title: 'Zeus',
+    poster: '/static/images/work/fleet.jpg',
+    title: 'Fleet',
+    year: '2026',
+  },
+  {
+    alt: 'Tally popover showing daily and monthly spend against budgets',
+    copy: [
+      <p key="body">
+        Tally is a macOS menu bar app for watching LLM spend and subscription
+        quotas. It reads LiteLLM gateway spend and the plans already signed in
+        on the Mac, tracks daily and monthly budgets, and warns before either
+        one is exceeded.
+      </p>,
+      <p key="link">
+        The <A href="https://github.com/nsrul/tally">Tally repository</A> has
+        the app and the gateway connector.
+      </p>,
+      <p key="role">My Role: Product and engineering.</p>,
+    ],
+    poster: '/static/images/work/tally.jpg',
+    title: 'Tally',
+    video: '/static/images/work/tally.mp4',
     year: '2026',
   },
   {

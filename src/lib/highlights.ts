@@ -43,9 +43,11 @@ type FeaturedWorkItem = {
 
 export const featuredWork: FeaturedWorkItem[] = [
   {
-    result: 'open-source macOS workbench',
+    alt: 'Fleet window with two agent terminals and a diff panel for the focused session',
+    image: '/static/images/work/fleet.jpg',
+    result: 'open-source macOS workspace',
     role: 'product + engineering',
-    slug: 'zeus',
+    slug: 'fleet',
   },
   {
     result: 'live practice product',
@@ -64,11 +66,12 @@ const workDescriptions: Record<string, string> = {
   'bioacoustic-sound-classification': 'few-shot animal calls',
   'discourse-analysis-tool-suite': 'research text tools',
   'federated-nicheformer': 'federated genomics',
+  fleet: 'coding agents side by side',
   mldrills: 'ml practice platform',
   mytorch: 'numpy autograd',
   pettoo: 'pet care platform',
   syntwin: 'digital twin agents',
-  zeus: 'parallel coding agents',
+  tally: 'LLM spend in the menu bar',
 };
 
 export const highlightYear = (highlight: Highlight): number =>
@@ -78,9 +81,10 @@ export const workDescription = (highlight: Highlight): string =>
   workDescriptions[highlight.slug] ?? '';
 
 const workLinks: Record<string, string> = {
+  fleet: 'https://github.com/nsrul/fleet',
   mldrills: 'https://mldrills.com',
   syntwin: 'https://syntwin.ai',
-  zeus: 'https://nsrul.github.io/zeus',
+  tally: 'https://github.com/nsrul/tally',
 };
 
 export const workHref = (slug: string): string | undefined => workLinks[slug];

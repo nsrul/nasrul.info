@@ -1,0 +1,22 @@
+---
+title: Tally
+summary: A macOS menu bar app for watching LLM spend and subscription quotas, with budgets that warn before the bill does.
+kind: personal
+start: 2026-10
+---
+
+I use several model providers at once, and each one reports usage somewhere different. Tally puts the numbers I actually care about in the menu bar: today's spend from a LiteLLM gateway, and the remaining quota on the plans already signed in on this Mac.
+
+The menu bar shows a figure or a small meter, whichever is easier to read at a glance. Clicking it opens a compact popover with today and this month against the budgets I set, the models spending the most today, and whether I am near a limit. The detailed view adds charts, the drivers behind the spend, and the full request history with search, filters, and CSV export.
+
+## Reading what is already there
+
+Gateway spend comes from LiteLLM's spend logs, either 1.49.6 or 1.106.2, using a per-person tracking key rather than an admin key. For ChatGPT/Codex, Claude, Grok, and Cursor, Tally reads the sign-in already on the Mac and shows the quota percentage, so I don't have to hunt through four different usage pages.
+
+For gateways that a laptop cannot reach, a small Python connector holds the private address and the upstream key; the app talks only to the connector. Budgets post a notification at a warning threshold and when they are exceeded, and can be snoozed for the day. Credentials stay in the Keychain, and a connection profile can be exported without secrets.
+
+## Trade-offs
+
+This is a personal tool built around one shape of gateway, not a universal billing dashboard. Spend history is only as good as the gateway's logs, the quota readers depend on each provider's local files and will break when those formats change, and the app is not sandboxed or notarized. Currency conversion is a manual rate against the dollar, not a live feed.
+
+The code is on [GitHub](https://github.com/nsrul/tally).
