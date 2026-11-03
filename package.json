@@ -18,14 +18,11 @@
   "dependencies": {
     "@base-ui/react": "^1.7.0",
     "@calcom/embed-react": "^1.5.3",
-    "@heroicons/react": "^2.0.18",
     "@mdx-js/rollup": "^3.1.1",
     "@nnayz/skills": "github:nsrul/skills",
     "@tanstack/react-router": "1.170.41",
     "@tanstack/react-start": "1.168.60",
     "@vercel/analytics": "^1.5.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.5",
     "lucide-react": "^0.577.0",
@@ -33,7 +30,6 @@
     "nitro": "^3.0.260610-beta",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwind-merge": "^3.5.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

@@ -5,7 +5,7 @@ import { Select as BaseSelect } from '@base-ui/react/select';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useCallback, useId, useState } from 'react';
 
-export interface SelectOption<Value extends string | number> {
+interface SelectOption<Value extends string | number> {
   label: string;
   value: Value;
 }

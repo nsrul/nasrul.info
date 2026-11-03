@@ -5,7 +5,7 @@
  * preset lets the same scheduler play a clipped staccato note, a held bass
  * note, or a soft arpeggio without baking those choices into the audio engine.
  */
-export type PresetNote = [
+type PresetNote = [
   step: number,
   midi: number,
   duration: number,

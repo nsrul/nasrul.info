@@ -10,7 +10,7 @@ interface Props extends Omit<
 
 const SITE_HOSTNAME = 'nasrul.info';
 
-export function ExternalChevron({ className }: { className?: string }) {
+function ExternalChevron({ className }: { className?: string }) {
   return (
     <svg
       aria-hidden="true"

@@ -19,7 +19,7 @@ export const kindLabels: Record<HighlightKind, string> = {
   research: 'Research',
 };
 
-export const highlightPeriod = (highlight: Highlight): string => {
+const highlightPeriod = (highlight: Highlight): string => {
   if (!highlight.start) return '';
   const year = (date: string) => date.slice(0, 4);
   const end = highlight.end ? year(highlight.end) : 'Present';

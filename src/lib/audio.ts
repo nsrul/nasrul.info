@@ -2,7 +2,7 @@
 import { store } from './store';
 
 type Blip = 'click' | 'hover' | 'toggle' | 'open' | 'enter' | 'grid';
-export type PianoStatus = 'idle' | 'loading' | 'ready' | 'error';
+type PianoStatus = 'idle' | 'loading' | 'ready' | 'error';
 
 type PianoNoteOptions = {
   delay?: number;
@@ -280,13 +280,6 @@ export function stopMusic() {
   const ac = context();
   if (!ac) return;
   for (const voice of [...activeMusicVoices]) releaseMusicVoice(ac, voice);
-}
-
-/** Soft hover pitch: higher rows are a little brighter, never trebly. */
-export function gridHoverDetune(row: number, rows: number) {
-  if (rows <= 1) return 0;
-  const t = Math.min(1, Math.max(0, 1 - row / (rows - 1)));
-  return (t - 0.4) * 320;
 }
 
 function playSoftClick(ac: AudioContext, now: number) {

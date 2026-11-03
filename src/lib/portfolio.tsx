@@ -23,6 +23,31 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    alt: 'Regulaido workspace showing the orchestrator routing a request to a document agent, with every sentence cited to its source',
+    copy: [
+      <p key="body">
+        Regulaido is an agentic platform for medical writing from Pharos Labs.
+        Specialist agents handle systematic reviews, document research,
+        drafting, and review, while an orchestrator routes each request and
+        keeps the evidence traceable from source to final document.
+      </p>,
+      <p key="body">
+        I worked as an AI Engineer across the agentic workflows and the product
+        around them: building agent flows, shipping frontend components, and
+        fixing bugs throughout the interface medical writers use every day.
+      </p>,
+      <p key="link">
+        The public product is{' '}
+        <A href="https://pharos-labs.com/regulaido">Regulaido</A>.
+      </p>,
+      <p key="role">My Role: AI Engineer at Pharos Labs.</p>,
+    ],
+    poster: '/static/images/work/regulaido.jpg',
+    title: 'Regulaido by Pharos Labs',
+    video: '/static/images/work/regulaido.mp4',
+    year: '2026',
+  },
+  {
     alt: 'Fleet window with two agent terminals and a diff panel for the focused session',
     copy: [
       <p key="body">
