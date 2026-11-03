@@ -24,9 +24,8 @@
       "@components/*": ["./src/components/*"],
       "@data/*": ["./data/*"],
       "@lib/*": ["./src/lib/*"],
-      "@assets/*": ["./src/assets/*"],
-      "content-collections": ["./.content-collections/generated"]
+      "@assets/*": ["./src/assets/*"]
     }
   },
-  "include": ["src", "content-collections.d.ts"]
+  "include": ["src"]
 }

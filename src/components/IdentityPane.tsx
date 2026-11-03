@@ -1,6 +1,7 @@
 import { portrait } from '@lib/portfolio';
+import { Link } from '@tanstack/react-router';
 import { useTheme } from 'next-themes';
-import { useEffect, useState, type MouseEvent, type RefObject } from 'react';
+import { useEffect, useState, type RefObject } from 'react';
 
 const scrollKeys = new Set([
   'ArrowDown',
@@ -13,16 +14,14 @@ const scrollKeys = new Set([
 ]);
 
 export const sections = [
-  { id: 'writing', label: 'Writing' },
-  { id: 'projects', label: 'Featured Projects' },
-  { id: 'open-source', label: 'Open Source' },
-  { id: 'photography', label: 'Photography' },
-  { id: 'meeting', label: 'Book a meeting' },
+  { id: 'writing', label: 'Writing', to: '/writing' },
+  { id: 'projects', label: 'Featured Projects', to: '/work' },
+  { id: 'open-source', label: 'Open Source', to: '/open-source' },
+  { id: 'photography', label: 'Photography', to: '/photography' },
+  { id: 'meeting', label: 'Book a meeting', to: '/meeting' },
 ] as const;
 
 export type PanelId = (typeof sections)[number]['id'];
-
-export const panels: readonly PanelId[] = sections.map((section) => section.id);
 
 export function usePaneKeyboard(paneRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
@@ -64,13 +63,7 @@ export function usePaneKeyboard(paneRef: RefObject<HTMLElement | null>) {
   }, [paneRef]);
 }
 
-export default function IdentityPane({
-  current,
-  onSelect,
-}: {
-  current: PanelId | null;
-  onSelect?: (event: MouseEvent<HTMLAnchorElement>, id: PanelId) => void;
-}) {
+export default function IdentityPane({ current }: { current: PanelId | null }) {
   return (
     <aside className="pane-a">
       <ThemeSwitch />
@@ -117,17 +110,12 @@ export default function IdentityPane({
         <ul>
           {sections.map((section) => (
             <li key={section.id}>
-              <a
+              <Link
                 aria-current={current === section.id ? 'page' : undefined}
-                href={`/#${section.id}`}
-                onClick={
-                  onSelect
-                    ? (event) => onSelect(event, section.id)
-                    : undefined
-                }
+                to={section.to}
               >
                 {section.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

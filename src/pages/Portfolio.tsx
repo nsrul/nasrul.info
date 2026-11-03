@@ -1,5 +1,4 @@
 import IdentityPane, {
-  panels,
   sections,
   usePaneKeyboard,
   type PanelId,
@@ -7,10 +6,8 @@ import IdentityPane, {
 import ProjectMedia from '@components/ProjectMedia';
 import { trackEvent } from '@lib/analytics';
 import { projects } from '@lib/portfolio';
-import { useNavigate, useRouterState } from '@tanstack/react-router';
-import { allWritings } from 'content-collections';
 import { useTheme } from 'next-themes';
-import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const openSource = [
   {
@@ -60,94 +57,15 @@ const openSource = [
 const CAL_LINK = 'nasrul-huda/15min';
 const CAL_NAMESPACE = 'home-meeting';
 
-const writtenOn = new Intl.DateTimeFormat('en-GB', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-});
-
-function panelFromHash(hash: string): PanelId {
-  const id = hash.replace(/^#/, '');
-  return (panels as readonly string[]).includes(id)
-    ? (id as PanelId)
-    : 'projects';
-}
-
-function formatWrittenOn(value: string) {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return value;
-  return writtenOn.format(date);
-}
-
-type Post = {
-  publishedAt: string;
-  slug: string;
-  summary?: string;
-  title: string;
-};
-
-function writingPosts(): Post[] {
-  try {
-    return ((allWritings as Post[]) || [])
-      .filter((post) => post.slug && post.title)
-      .slice()
-      .sort(
-        (a, b) =>
-          Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
-      );
-  } catch {
-    return [];
-  }
-}
-
-export default function Home() {
+export default function Portfolio({ panel }: { panel: PanelId }) {
   const paneRef = useRef<HTMLElement>(null);
-  const seenPanel = useRef<PanelId | null>(null);
-  const navigate = useNavigate();
-  const hash = useRouterState({
-    select: (state) => state.location.hash,
-  });
-  const [mounted, setMounted] = useState(false);
-  const panel = mounted ? panelFromHash(hash) : 'projects';
   const label = sections.find((section) => section.id === panel)?.label;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   usePaneKeyboard(paneRef);
 
-  const showPanel = useCallback(() => {
-    const pane = paneRef.current;
-    if (!pane) return;
-    if (window.matchMedia('(max-width: 900px)').matches) {
-      pane.scrollIntoView();
-      return;
-    }
-    pane.scrollTo({ top: 0 });
-  }, []);
-
-  useEffect(() => {
-    if (seenPanel.current === panel) return;
-    const first = seenPanel.current === null;
-    seenPanel.current = panel;
-    if (first) return;
-    showPanel();
-  }, [panel, showPanel]);
-
-  const onSelect = (event: MouseEvent<HTMLAnchorElement>, id: PanelId) => {
-    event.preventDefault();
-    navigate({
-      hash: id,
-      hashScrollIntoView: false,
-      to: '/',
-    });
-    if (panel === id) showPanel();
-  };
-
   return (
     <div className="portfolio">
-      <IdentityPane current={panel} onSelect={onSelect} />
+      <IdentityPane current={panel} />
 
       <main aria-label={label} className="pane-b" ref={paneRef}>
         {panel === 'writing' ? <WritingPanel /> : null}
@@ -182,32 +100,11 @@ function ProjectsPanel() {
 }
 
 function WritingPanel() {
-  const posts = writingPosts();
-
   return (
-    <>
-      {posts.map((post) => (
-        <article className="note" key={post.slug}>
-          <h2>
-            <a href={`/writing/${post.slug}`}>{post.title}</a>
-          </h2>
-          <p className="year">
-            <time dateTime={post.publishedAt}>
-              {formatWrittenOn(post.publishedAt)}
-            </time>
-          </p>
-          {post.summary ? (
-            <div className="copy">
-              <p>{post.summary}</p>
-            </div>
-          ) : null}
-        </article>
-      ))}
-      <p className={posts.length ? undefined : 'lede'}>
-        If you&apos;re interested in exploring the articles that inspire me and
-        shape my thinking, check out <a href="/resources">Resources</a>.
-      </p>
-    </>
+    <p className="lede">
+      If you&apos;re interested in exploring the articles that inspire me and
+      shape my thinking, check out <a href="/resources">Resources</a>.
+    </p>
   );
 }
 

@@ -10,34 +10,31 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ConsultingRouteImport } from './routes/consulting'
-import { Route as HighlightsRouteImport } from './routes/highlights'
-import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as MeetingRouteImport } from './routes/meeting'
+import { Route as OpenSourceRouteImport } from './routes/open-source'
+import { Route as PhotographyRouteImport } from './routes/photography'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as WritingRouteImport } from './routes/writing'
-import { Route as HighlightsSlugRouteImport } from './routes/highlights_.$slug'
-import { Route as WorkSlugRouteImport } from './routes/work_.$slug'
-import { Route as WritingSlugRouteImport } from './routes/writing_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ConsultingRoute = ConsultingRouteImport.update({
-  id: '/consulting',
-  path: '/consulting',
+const MeetingRoute = MeetingRouteImport.update({
+  id: '/meeting',
+  path: '/meeting',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HighlightsRoute = HighlightsRouteImport.update({
-  id: '/highlights',
-  path: '/highlights',
+const OpenSourceRoute = OpenSourceRouteImport.update({
+  id: '/open-source',
+  path: '/open-source',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PlaygroundRoute = PlaygroundRouteImport.update({
-  id: '/playground',
-  path: '/playground',
+const PhotographyRoute = PhotographyRouteImport.update({
+  id: '/photography',
+  path: '/photography',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -55,109 +52,73 @@ const WritingRoute = WritingRouteImport.update({
   path: '/writing',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HighlightsSlugRoute = HighlightsSlugRouteImport.update({
-  id: '/highlights_/$slug',
-  path: '/highlights/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WorkSlugRoute = WorkSlugRouteImport.update({
-  id: '/work_/$slug',
-  path: '/work/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WritingSlugRoute = WritingSlugRouteImport.update({
-  id: '/writing_/$slug',
-  path: '/writing/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/consulting': typeof ConsultingRoute
-  '/highlights': typeof HighlightsRoute
-  '/playground': typeof PlaygroundRoute
+  '/meeting': typeof MeetingRoute
+  '/open-source': typeof OpenSourceRoute
+  '/photography': typeof PhotographyRoute
   '/resources': typeof ResourcesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
-  '/highlights/$slug': typeof HighlightsSlugRoute
-  '/work/$slug': typeof WorkSlugRoute
-  '/writing/$slug': typeof WritingSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/consulting': typeof ConsultingRoute
-  '/highlights': typeof HighlightsRoute
-  '/playground': typeof PlaygroundRoute
+  '/meeting': typeof MeetingRoute
+  '/open-source': typeof OpenSourceRoute
+  '/photography': typeof PhotographyRoute
   '/resources': typeof ResourcesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
-  '/highlights/$slug': typeof HighlightsSlugRoute
-  '/work/$slug': typeof WorkSlugRoute
-  '/writing/$slug': typeof WritingSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/consulting': typeof ConsultingRoute
-  '/highlights': typeof HighlightsRoute
-  '/playground': typeof PlaygroundRoute
+  '/meeting': typeof MeetingRoute
+  '/open-source': typeof OpenSourceRoute
+  '/photography': typeof PhotographyRoute
   '/resources': typeof ResourcesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
-  '/highlights_/$slug': typeof HighlightsSlugRoute
-  '/work_/$slug': typeof WorkSlugRoute
-  '/writing_/$slug': typeof WritingSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/consulting'
-    | '/highlights'
-    | '/playground'
+    | '/meeting'
+    | '/open-source'
+    | '/photography'
     | '/resources'
     | '/work'
     | '/writing'
-    | '/highlights/$slug'
-    | '/work/$slug'
-    | '/writing/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/consulting'
-    | '/highlights'
-    | '/playground'
+    | '/meeting'
+    | '/open-source'
+    | '/photography'
     | '/resources'
     | '/work'
     | '/writing'
-    | '/highlights/$slug'
-    | '/work/$slug'
-    | '/writing/$slug'
   id:
     | '__root__'
     | '/'
-    | '/consulting'
-    | '/highlights'
-    | '/playground'
+    | '/meeting'
+    | '/open-source'
+    | '/photography'
     | '/resources'
     | '/work'
     | '/writing'
-    | '/highlights_/$slug'
-    | '/work_/$slug'
-    | '/writing_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ConsultingRoute: typeof ConsultingRoute
-  HighlightsRoute: typeof HighlightsRoute
-  PlaygroundRoute: typeof PlaygroundRoute
+  MeetingRoute: typeof MeetingRoute
+  OpenSourceRoute: typeof OpenSourceRoute
+  PhotographyRoute: typeof PhotographyRoute
   ResourcesRoute: typeof ResourcesRoute
   WorkRoute: typeof WorkRoute
   WritingRoute: typeof WritingRoute
-  HighlightsSlugRoute: typeof HighlightsSlugRoute
-  WorkSlugRoute: typeof WorkSlugRoute
-  WritingSlugRoute: typeof WritingSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -169,25 +130,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/consulting': {
-      id: '/consulting'
-      path: '/consulting'
-      fullPath: '/consulting'
-      preLoaderRoute: typeof ConsultingRouteImport
+    '/meeting': {
+      id: '/meeting'
+      path: '/meeting'
+      fullPath: '/meeting'
+      preLoaderRoute: typeof MeetingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/highlights': {
-      id: '/highlights'
-      path: '/highlights'
-      fullPath: '/highlights'
-      preLoaderRoute: typeof HighlightsRouteImport
+    '/open-source': {
+      id: '/open-source'
+      path: '/open-source'
+      fullPath: '/open-source'
+      preLoaderRoute: typeof OpenSourceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/playground': {
-      id: '/playground'
-      path: '/playground'
-      fullPath: '/playground'
-      preLoaderRoute: typeof PlaygroundRouteImport
+    '/photography': {
+      id: '/photography'
+      path: '/photography'
+      fullPath: '/photography'
+      preLoaderRoute: typeof PhotographyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -211,41 +172,17 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WritingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/highlights_/$slug': {
-      id: '/highlights_/$slug'
-      path: '/highlights/$slug'
-      fullPath: '/highlights/$slug'
-      preLoaderRoute: typeof HighlightsSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/work_/$slug': {
-      id: '/work_/$slug'
-      path: '/work/$slug'
-      fullPath: '/work/$slug'
-      preLoaderRoute: typeof WorkSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/writing_/$slug': {
-      id: '/writing_/$slug'
-      path: '/writing/$slug'
-      fullPath: '/writing/$slug'
-      preLoaderRoute: typeof WritingSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ConsultingRoute: ConsultingRoute,
-  HighlightsRoute: HighlightsRoute,
-  PlaygroundRoute: PlaygroundRoute,
+  MeetingRoute: MeetingRoute,
+  OpenSourceRoute: OpenSourceRoute,
+  PhotographyRoute: PhotographyRoute,
   ResourcesRoute: ResourcesRoute,
   WorkRoute: WorkRoute,
   WritingRoute: WritingRoute,
-  HighlightsSlugRoute: HighlightsSlugRoute,
-  WorkSlugRoute: WorkSlugRoute,
-  WritingSlugRoute: WritingSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

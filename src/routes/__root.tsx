@@ -1,6 +1,5 @@
 import { AppProviders, AppShell } from '../App';
 import appCss from '../assets/styles/globals.css?url';
-import proseCss from '../assets/styles/prose.css?url';
 import NotFound from '../pages/NotFound';
 import {
   HeadContent,
@@ -17,22 +16,7 @@ export const Route = createRootRoute({
         href: '/static/favicons/site.webmanifest',
         rel: 'manifest',
       },
-      {
-        as: 'font',
-        crossOrigin: 'anonymous',
-        href: '/static/fonts/satoshi-400.woff2',
-        rel: 'preload',
-        type: 'font/woff2',
-      },
-      {
-        as: 'font',
-        crossOrigin: 'anonymous',
-        href: '/static/fonts/satoshi-500.woff2',
-        rel: 'preload',
-        type: 'font/woff2',
-      },
       { href: appCss, rel: 'stylesheet' },
-      { href: proseCss, rel: 'stylesheet' },
     ],
     meta: [
       { charSet: 'utf-8' },
