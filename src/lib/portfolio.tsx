@@ -8,8 +8,10 @@ function A({ children, href }: { children: ReactNode; href: string }) {
   );
 }
 
-// Set when a 3:4 photo is at public/static/images/portrait.jpg.
-export const portrait: { alt: string; src: string } | null = null;
+export const portrait: { alt: string; src: string } | null = {
+  alt: 'Nasrul Huda smiling while sitting by the window on a train',
+  src: '/static/images/portrait.jpg',
+};
 
 export type Project = {
   alt: string;
