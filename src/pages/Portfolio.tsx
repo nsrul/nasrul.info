@@ -68,8 +68,8 @@ export default function Portfolio({ panel }: { panel: PanelId }) {
       <IdentityPane current={panel} />
 
       <main aria-label={label} className="pane-b" ref={paneRef}>
+        {panel === 'featured' ? <FeaturedPanel /> : null}
         {panel === 'writing' ? <WritingPanel /> : null}
-        {panel === 'projects' ? <ProjectsPanel /> : null}
         {panel === 'open-source' ? <OpenSourcePanel /> : null}
         {panel === 'photography' ? <PhotographyPanel /> : null}
         {panel === 'meeting' ? <MeetingPanel /> : null}
@@ -78,7 +78,7 @@ export default function Portfolio({ panel }: { panel: PanelId }) {
   );
 }
 
-function ProjectsPanel() {
+function FeaturedPanel() {
   return projects.map((project, index) => (
     <article className="entry" key={project.title}>
       <h2>{project.title}</h2>

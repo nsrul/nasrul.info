@@ -14,9 +14,9 @@ const scrollKeys = new Set([
 ]);
 
 export const sections = [
+  { id: 'featured', label: 'Featured', to: '/' },
   { id: 'writing', label: 'Writing', to: '/writing' },
-  { id: 'projects', label: 'Featured Projects', to: '/work' },
-  { id: 'open-source', label: 'Open Source', to: '/open-source' },
+  { id: 'open-source', label: 'Open source', to: '/open-source' },
   { id: 'photography', label: 'Photography', to: '/photography' },
   { id: 'meeting', label: 'Book a meeting', to: '/meeting' },
 ] as const;
