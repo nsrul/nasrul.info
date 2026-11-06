@@ -1,7 +1,5 @@
 @import 'tailwindcss' source(none);
-@plugin '@tailwindcss/typography';
 @source '../../**/*.{js,ts,jsx,tsx}';
-@source '../../../content/**/*.{md,mdx}';
 @source inline('{h-48,h-72,h-96}');
 @custom-variant dark (&:where(.dark, .dark *));
 

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>Nasrul Huda</title>
-  <rect width="64" height="64" rx="16" fill="#0a0a0a" />
-  <g stroke="#fff" stroke-width="7" stroke-linecap="round">
-    <path d="M32 15V49" />
-    <path d="M46.72 23.5 17.28 40.5" />
-    <path d="M17.28 23.5 46.72 40.5" />
-  </g>
-</svg>

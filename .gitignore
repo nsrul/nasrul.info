@@ -44,3 +44,7 @@ yarn-error.log*
 dist/
 .tokensave
 .serena
+
+# local agent skills
+.agents/skills/
+skills-lock.json

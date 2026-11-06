@@ -1,0 +1,507 @@
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/static/fonts/instrument-sans-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/static/fonts/instrument-sans-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+html:has(.portfolio-shell),
+html:has(.portfolio-shell) body {
+  --paper: #f6f6f6;
+  --ink: #000;
+  max-height: none;
+  background: var(--paper);
+  color: var(--ink);
+  color-scheme: light;
+  font-size: 100%;
+}
+
+html.dark:has(.portfolio-shell),
+html.dark:has(.portfolio-shell) body {
+  --paper: #242220;
+  --ink: #e6e1d8;
+  color-scheme: dark;
+}
+
+@media (min-width: 901px) {
+  html:has(.portfolio-shell),
+  html:has(.portfolio-shell) body {
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+.portfolio-shell {
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--paper, #f6f6f6);
+  color: var(--ink, #000);
+}
+
+.portfolio {
+  --paper: #f6f6f6;
+  --ink: #000;
+  --link: #2158e8;
+  --link-highlight: #edf5ff;
+  --name: #cc0074;
+  --name-highlight: #ffe8f3;
+  --media-placeholder: #e4e4e4;
+  --focus: #1a56ff;
+  --pad: 1.95vw;
+  /* Same size as jdhooge.com body copy: 1.2rem of a root tied to the short side. */
+  --fs: min(1.728vw, 1.728dvh);
+
+  display: grid;
+  grid-template-columns: 25% minmax(0, 1fr);
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family:
+    'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: var(--fs);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  cursor: auto;
+}
+
+html.dark .portfolio {
+  --paper: #242220;
+  --ink: #e6e1d8;
+  --link: #9db4f0;
+  --link-highlight: #2a3344;
+  --name: #e4a8c4;
+  --name-highlight: #3c2e35;
+  --media-placeholder: #312e2a;
+  --focus: #9db4f0;
+}
+
+.portfolio .pane-a,
+.portfolio .pane-b {
+  min-height: 0;
+  padding: var(--pad);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.portfolio .pane-a {
+  position: relative;
+}
+
+.portfolio .pane-a h1 {
+  padding-right: 1.7em;
+}
+
+.portfolio h1,
+.portfolio h2,
+.portfolio p,
+.portfolio time {
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.portfolio h1,
+.portfolio .pane-a p {
+  margin-bottom: 1.25em;
+}
+
+.portfolio a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  transition: none;
+}
+
+.portfolio a:hover,
+.portfolio a:active {
+  color: inherit;
+  text-decoration-line: underline;
+}
+
+.portfolio h1 a,
+.portfolio h1 a:hover,
+.portfolio h1 a:active {
+  color: var(--name);
+  background-color: var(--name-highlight);
+  text-decoration: none;
+  font-style: italic;
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+}
+
+.portfolio p a,
+.portfolio p a:hover,
+.portfolio p a:active {
+  color: var(--link);
+  background-color: var(--link-highlight);
+  text-decoration-color: var(--link);
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.portfolio nav ul {
+  margin: 0 0 1.25em;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.portfolio nav li {
+  width: fit-content;
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+  color: var(--name);
+  background-color: var(--name-highlight);
+  font-style: italic;
+}
+
+.portfolio nav a,
+.portfolio nav a:hover,
+.portfolio nav a:active {
+  color: inherit;
+  background: none;
+  text-decoration: none;
+  font-style: inherit;
+  font-weight: 500;
+  padding: 0;
+  border-radius: 0;
+}
+
+.portfolio nav a[aria-current='page'] {
+  font-weight: 700;
+}
+
+.portfolio a:focus {
+  outline: none;
+}
+
+.portfolio a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.portfolio .theme-toggle {
+  position: absolute;
+  top: calc(var(--pad) + 0.05em);
+  right: var(--pad);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 1.35em;
+  height: 1.35em;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.portfolio .theme-toggle svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.portfolio .theme-toggle:focus {
+  outline: none;
+}
+
+.portfolio .theme-toggle:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.portfolio .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.portfolio .portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  margin-top: 2.5em;
+  object-fit: cover;
+  background: var(--media-placeholder);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.portfolio .entry {
+  display: grid;
+  grid-template-areas:
+    'title year'
+    'copy media';
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.115fr);
+  column-gap: 2.3vw;
+  align-items: start;
+  margin-bottom: 5.4vw;
+}
+
+.portfolio .entry h2 {
+  grid-area: title;
+  margin-bottom: 1.25em;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.portfolio .year {
+  grid-area: year;
+  margin-bottom: 1.25em;
+}
+
+.portfolio .copy {
+  grid-area: copy;
+  min-width: 0;
+}
+
+.portfolio .copy p + p {
+  margin-top: 1.25em;
+}
+
+.portfolio .media {
+  grid-area: media;
+  min-width: 0;
+}
+
+.portfolio .lede {
+  margin-bottom: 2.5em;
+}
+
+.portfolio .lede:has(+ .resource-board) {
+  margin-bottom: 1.5em;
+}
+
+.portfolio .resource-board {
+  container-type: inline-size;
+}
+
+.portfolio .resources {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 2.6em;
+  row-gap: 1.7em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio .resources a,
+.portfolio .resources a:hover,
+.portfolio .resources a:active {
+  display: grid;
+  grid-template-columns: 3em minmax(0, 1fr);
+  column-gap: 0.9em;
+  align-items: start;
+  padding: 0;
+  color: inherit;
+  background: none;
+  text-decoration: none;
+}
+
+.portfolio .resources .resource-mark {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 3em;
+  height: 3em;
+  padding: 0.42em;
+  background: var(--media-placeholder);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.portfolio .resources .resource-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+  background: transparent;
+}
+
+.portfolio .resources .resource-copy {
+  min-width: 0;
+  padding-top: 0.15em;
+}
+
+.portfolio .resources .resource-title {
+  display: inline;
+  font-weight: 600;
+  color: var(--link);
+  background-color: var(--link-highlight);
+  text-decoration: none;
+  text-wrap: balance;
+  padding: 0 0.12em;
+  margin-inline-start: -0.12em;
+  border-radius: 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.portfolio .resources .resource-desc {
+  display: block;
+  margin-top: 0.55em;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+
+@container (max-width: 56rem) {
+  .portfolio .resources {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container (max-width: 36rem) {
+  .portfolio .resources {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.portfolio .note {
+  margin-bottom: 2.5em;
+}
+
+.portfolio .note h2,
+.portfolio .note .year {
+  display: inline;
+}
+
+.portfolio .note h2 {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.portfolio .note .year {
+  margin-left: 0.6em;
+}
+
+.portfolio .note .copy {
+  margin-top: 1.25em;
+}
+
+.portfolio .note h2 a,
+.portfolio .note h2 a:hover,
+.portfolio .note h2 a:active {
+  color: var(--link);
+  background-color: var(--link-highlight);
+  text-decoration-color: var(--link);
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+}
+
+.portfolio .booking {
+  height: 70dvh;
+  min-height: 28em;
+}
+
+.portfolio .media img,
+.portfolio .media video,
+.portfolio .media-fallback {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--media-placeholder);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .portfolio-shell {
+    height: auto;
+    overflow: visible;
+  }
+
+  .portfolio {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .portfolio .pane-a,
+  .portfolio .pane-b {
+    height: auto;
+    padding: 16px;
+    overflow: visible;
+  }
+
+  .portfolio .pane-b {
+    min-height: 100dvh;
+    padding-top: 0;
+  }
+
+  .portfolio .entry {
+    grid-template-areas:
+      'title year'
+      'media media'
+      'copy copy';
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 16px;
+    row-gap: 12px;
+    margin-bottom: 64px;
+  }
+
+  .portfolio .entry h2,
+  .portfolio .year {
+    margin-bottom: 0;
+  }
+}
+
+/* Phone portrait and short landscape use the same boost as jdhooge.com. */
+@media (max-aspect-ratio: 4/5) {
+  .portfolio {
+    --fs: min(3.97824vw, 3.97824dvh);
+  }
+}
+
+@media (min-aspect-ratio: 2/3) and (max-height: 500px) {
+  .portfolio {
+    --fs: min(5.11488vw, 5.11488dvh);
+  }
+}

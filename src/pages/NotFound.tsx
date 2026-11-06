@@ -1,14 +1,18 @@
-import InternalLink from '@components/InternalLink';
-import PageInset from '@components/PageInset';
+import IdentityPane from '@components/IdentityPane';
+import { Link } from '@tanstack/react-router';
 
 export default function NotFound() {
   return (
-    <PageInset className="flex flex-col gap-8">
-      <h1 className="text-5xl font-medium sm:text-6xl">404</h1>
-      <p className="text-secondary">
-        The page you&apos;re looking for doesn&apos;t exist.
-      </p>
-      <InternalLink to="/">Go back home</InternalLink>
-    </PageInset>
+    <div className="portfolio">
+      <IdentityPane current={null} />
+      <main aria-label="Not found" className="pane-b">
+        <p className="lede">
+          The page you&apos;re looking for doesn&apos;t exist.
+        </p>
+        <p className="note">
+          <Link to="/">Go back home</Link>
+        </p>
+      </main>
+    </div>
   );
 }
