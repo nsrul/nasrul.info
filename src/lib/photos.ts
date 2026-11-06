@@ -26,4 +26,9 @@ export const photos: Photo[] = [
     src: '/static/images/photography/courtyard.jpg',
     title: 'Courtyard',
   },
+  {
+    alt: 'A white doorway opening onto a checkered marble floor, a dark balustrade, and landscape paintings under gilded arches.',
+    src: '/static/images/photography/museum.jpg',
+    title: 'Museum',
+  },
 ];

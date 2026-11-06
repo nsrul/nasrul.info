@@ -137,9 +137,8 @@ export const projects: Project[] = [
         Nextcloud compatibility and integration.
       </p>,
       <p key="link">
-        The{' '}
-        <A href="https://github.com/strukto-ai/mirage">Mirage repository</A> is
-        open source.
+        The <A href="https://github.com/strukto-ai/mirage">Mirage repository</A>{' '}
+        is open source.
       </p>,
     ],
     poster: '/static/images/work/mirage.png',
@@ -177,7 +176,8 @@ export const projects: Project[] = [
         The comparison is written up on{' '}
         <A href="https://github.com/nsrul/ft-nicheformer">
           Federated Nicheformer on GitHub
-        </A>.
+        </A>
+        .
       </p>,
       <p key="role">My Role: Course project.</p>,
     ],
@@ -198,7 +198,8 @@ export const projects: Project[] = [
         The training code is on the{' '}
         <A href="https://github.com/nsrul/prototypical-networks-bioacoustics">
           bioacoustics repository on GitHub
-        </A>.
+        </A>
+        .
       </p>,
       <p key="role">My Role: Course project.</p>,
     ],
@@ -271,8 +272,7 @@ export const projects: Project[] = [
       </p>,
       <p key="link">
         The documentation is at <A href="https://dats.science">dats.science</A>.
-        The{' '}
-        <A href="https://dats.ltdemos.informatik.uni-hamburg.de">demo</A>{' '}
+        The <A href="https://dats.ltdemos.informatik.uni-hamburg.de">demo</A>{' '}
         runs on the university host.
       </p>,
       <p key="role">My Role: Research Assistant.</p>,
@@ -295,9 +295,8 @@ export const contributions: Project[] = [
         Nextcloud compatibility and integration.
       </p>,
       <p key="link">
-        The{' '}
-        <A href="https://github.com/strukto-ai/mirage">Mirage repository</A> is
-        open source.
+        The <A href="https://github.com/strukto-ai/mirage">Mirage repository</A>{' '}
+        is open source.
       </p>,
     ],
     poster: '/static/images/work/mirage.png',
@@ -315,8 +314,7 @@ export const contributions: Project[] = [
       </p>,
       <p key="link">
         The documentation is at <A href="https://dats.science">dats.science</A>.
-        The{' '}
-        <A href="https://dats.ltdemos.informatik.uni-hamburg.de">demo</A>{' '}
+        The <A href="https://dats.ltdemos.informatik.uni-hamburg.de">demo</A>{' '}
         runs on the university host.
       </p>,
     ],
