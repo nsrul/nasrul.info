@@ -25,7 +25,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    alt: 'Regulaido workspace showing the orchestrator routing a request to a document agent, with every sentence cited to its source',
+    alt: 'Regulaido wordmark above three document cards labelled Reviews, Evidence and Drafts, closing on the line Every claim, sourced',
     copy: [
       <p key="body">
         Regulaido is an agentic platform for medical writing from Pharos Labs.
@@ -39,8 +39,8 @@ export const projects: Project[] = [
         fixing bugs throughout the interface medical writers use every day.
       </p>,
       <p key="link">
-        The public product is{' '}
-        <A href="https://pharos-labs.com/regulaido">Regulaido</A>.
+        Learn more about the product{' '}
+        <A href="https://pharos-labs.com/regulaido">here</A>.
       </p>,
       <p key="role">My Role: AI Engineer at Pharos Labs.</p>,
     ],
@@ -128,7 +128,26 @@ export const projects: Project[] = [
     year: '2026',
   },
   {
-    alt: '',
+    alt: "Mirage wordmark and cube mark on black, with the line The World's First Virtual Terminal for AI Agents",
+    copy: [
+      <p key="body">
+        Mirage is a virtual terminal for AI agents from Strukto.ai. One shell
+        sits over files, commands, and runtimes, so an agent reaches each
+        service with the Unix tools it already knows. I contributed the
+        Nextcloud compatibility and integration.
+      </p>,
+      <p key="link">
+        The{' '}
+        <A href="https://github.com/strukto-ai/mirage">Mirage repository</A> is
+        open source.
+      </p>,
+    ],
+    poster: '/static/images/work/mirage.png',
+    title: 'Mirage by Strukto.ai',
+    year: '2026',
+  },
+  {
+    alt: 'ACL Anthology title card, Unified RAG Pipeline for Research, beside documents feeding a database',
     copy: [
       <p key="body">
         ACL Anthology Search finds papers by what they mean, not by the keywords
@@ -139,13 +158,14 @@ export const projects: Project[] = [
         You can try the{' '}
         <A href="https://acla.nasrul.info">ACL Anthology Search demo</A>.
       </p>,
-      <p key="role">My Role: Research.</p>,
+      <p key="role">My Role: Course project.</p>,
     ],
+    poster: '/static/images/work/acl-anthology.jpg',
     title: 'ACL Anthology Search',
     year: '2026',
   },
   {
-    alt: '',
+    alt: 'Title card for Federated Fine-Tuning and Zero-Shot Application of Nicheformer for Spatial Transcriptomics',
     copy: [
       <p key="body">
         Federated Nicheformer fine-tunes a genomics model across separate
@@ -159,13 +179,14 @@ export const projects: Project[] = [
           Federated Nicheformer on GitHub
         </A>.
       </p>,
-      <p key="role">My Role: Research.</p>,
+      <p key="role">My Role: Course project.</p>,
     ],
+    poster: '/static/images/work/nicheformer.jpg',
     title: 'Federated Nicheformer',
     year: '2026',
   },
   {
-    alt: '',
+    alt: 'A diagram of the bioacoustic training loop, from features and episodic sampling through the encoder, prototypes, and loss',
     copy: [
       <p key="body">
         This project trains a model to recognise animal calls from only a
@@ -181,11 +202,30 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Course project.</p>,
     ],
+    poster: '/static/images/work/bioacoustic.jpg',
     title: 'Bioacoustic Sound Classification',
     year: '2026',
   },
   {
-    alt: '',
+    alt: 'The 2025 nasrul.info homepage in a browser window, menu open, with a green pixel figure on a dark grid',
+    copy: [
+      <p key="body">
+        This was nasrul.info through 2025. Home was a dark outliner for what I
+        was doing, the menu opened onto work, consulting, writing, and
+        resources, and each project had its own page. A pixel figure sat on the
+        grid behind the type, and clicking a cell played a piano note.
+      </p>,
+      <p key="link">
+        Check it out <A href="https://2025.nasrul.info">here</A>.
+      </p>,
+      <p key="role">My Role: Design and engineering.</p>,
+    ],
+    poster: '/static/images/work/nasrul-info.jpg',
+    title: 'nasrul.info',
+    year: '2025',
+  },
+  {
+    alt: 'PETTOO wordmark in white on a green field',
     copy: [
       <p key="body">
         Pettoo connects pet owners with services, bookings, and products in one
@@ -197,11 +237,12 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Software engineer.</p>,
     ],
+    poster: '/static/images/work/pettoo.jpg',
     title: 'Pettoo',
     year: '2025',
   },
   {
-    alt: '',
+    alt: 'A line drawing of a neural network with connected nodes',
     copy: [
       <p key="body">
         MyTorch is a small deep-learning library written to see what sits inside
@@ -215,11 +256,12 @@ export const projects: Project[] = [
       </p>,
       <p key="role">My Role: Product and engineering.</p>,
     ],
+    poster: '/static/images/work/mytorch.jpg',
     title: 'MyTorch',
     year: '2025',
   },
   {
-    alt: '',
+    alt: 'A silent walkthrough of the Discourse Analysis Tool Suite, from the welcome card through the analysis workspace',
     copy: [
       <p key="body">
         The Discourse Analysis Tool Suite is a shared application for
@@ -228,15 +270,59 @@ export const projects: Project[] = [
         and the analysis paths behind them at the Language Technology Lab.
       </p>,
       <p key="link">
+        The documentation is at <A href="https://dats.science">dats.science</A>.
         The{' '}
-        <A href="https://dats.ltdemos.informatik.uni-hamburg.de">
-          Discourse Analysis Tool Suite demo
-        </A>{' '}
+        <A href="https://dats.ltdemos.informatik.uni-hamburg.de">demo</A>{' '}
         runs on the university host.
       </p>,
       <p key="role">My Role: Research Assistant.</p>,
     ],
+    poster: '/static/images/work/dats.jpg',
     title: 'Discourse Analysis Tool Suite',
+    video: '/static/images/work/dats.mp4',
+    year: '2025',
+  },
+];
+
+export const contributions: Project[] = [
+  {
+    alt: "Mirage wordmark and cube mark on black, with the line The World's First Virtual Terminal for AI Agents",
+    copy: [
+      <p key="body">
+        Mirage is a virtual terminal for AI agents from Strukto.ai. One shell
+        sits over files, commands, and runtimes, so an agent reaches each
+        service with the Unix tools it already knows. I contributed the
+        Nextcloud compatibility and integration.
+      </p>,
+      <p key="link">
+        The{' '}
+        <A href="https://github.com/strukto-ai/mirage">Mirage repository</A> is
+        open source.
+      </p>,
+    ],
+    poster: '/static/images/work/mirage.png',
+    title: 'Mirage by Strukto.ai',
+    year: '2026',
+  },
+  {
+    alt: 'A silent walkthrough of the Discourse Analysis Tool Suite, from the welcome card through the analysis workspace',
+    copy: [
+      <p key="body">
+        The Discourse Analysis Tool Suite is a shared application for
+        researchers working through large text collections, in place of a
+        notebook only its author can run. I built the interface, the services,
+        and the analysis paths behind them at the Language Technology Lab.
+      </p>,
+      <p key="link">
+        The documentation is at <A href="https://dats.science">dats.science</A>.
+        The{' '}
+        <A href="https://dats.ltdemos.informatik.uni-hamburg.de">demo</A>{' '}
+        runs on the university host.
+      </p>,
+    ],
+    poster: '/static/images/work/dats.jpg',
+    title: 'Discourse Analysis Tool Suite',
+    video: '/static/images/work/dats.mp4',
     year: '2025',
   },
 ];

@@ -5,54 +5,9 @@ import IdentityPane, {
 } from '@components/IdentityPane';
 import ProjectMedia from '@components/ProjectMedia';
 import { trackEvent } from '@lib/analytics';
-import { projects } from '@lib/portfolio';
+import { contributions, projects, type Project } from '@lib/portfolio';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
-
-const openSource = [
-  {
-    href: 'https://github.com/nsrul/fleet',
-    summary:
-      'Fleet is a macOS workspace for running installed coding-agent CLIs side by side, backed by a Rust daemon that owns the terminals.',
-    title: 'Fleet',
-    year: '2026',
-  },
-  {
-    href: 'https://github.com/nsrul/tally',
-    summary:
-      'Tally is a macOS menu bar app for watching LLM spend and subscription quotas against budgets.',
-    title: 'Tally',
-    year: '2026',
-  },
-  {
-    href: 'https://github.com/nsrul/acl-anthology-rag',
-    summary:
-      'ACL Anthology Search finds papers by what they mean, not by the keywords they happen to use.',
-    title: 'ACL Anthology Search',
-    year: '2026',
-  },
-  {
-    href: 'https://github.com/nsrul/ft-nicheformer',
-    summary:
-      'Federated Nicheformer fine-tunes a genomics model across separate regions of mouse brain data without moving the samples.',
-    title: 'Federated Nicheformer',
-    year: '2026',
-  },
-  {
-    href: 'https://github.com/nsrul/prototypical-networks-bioacoustics',
-    summary:
-      'This project trains a model to recognise animal calls from only a handful of labelled clips.',
-    title: 'Bioacoustic Sound Classification',
-    year: '2026',
-  },
-  {
-    href: 'https://github.com/nsrul/mytorch',
-    summary:
-      'MyTorch is a small deep-learning library written to see what sits inside PyTorch.',
-    title: 'MyTorch',
-    year: '2025',
-  },
-] as const;
 
 const CAL_LINK = 'nasrul-huda/15min';
 const CAL_NAMESPACE = 'home-meeting';
@@ -78,8 +33,8 @@ export default function Portfolio({ panel }: { panel: PanelId }) {
   );
 }
 
-function FeaturedPanel() {
-  return projects.map((project, index) => (
+function ProjectEntries({ items }: { items: Project[] }) {
+  return items.map((project, index) => (
     <article className="entry" key={project.title}>
       <h2>{project.title}</h2>
       <p className="year">
@@ -99,6 +54,10 @@ function FeaturedPanel() {
   ));
 }
 
+function FeaturedPanel() {
+  return <ProjectEntries items={projects} />;
+}
+
 function WritingPanel() {
   return (
     <p className="lede">
@@ -109,33 +68,7 @@ function WritingPanel() {
 }
 
 function OpenSourcePanel() {
-  return (
-    <>
-      <p className="lede">
-        Published code is on{' '}
-        <a href="https://github.com/nsrul" rel="noreferrer">
-          GitHub
-        </a>
-        .
-      </p>
-      {openSource.map((item) => (
-        <article className="note" key={item.href}>
-          <h2>{item.title}</h2>
-          <p className="year">
-            <time dateTime={item.year}>{item.year}</time>
-          </p>
-          <div className="copy">
-            <p>{item.summary}</p>
-            <p>
-              <a href={item.href} rel="noreferrer">
-                GitHub
-              </a>
-            </p>
-          </div>
-        </article>
-      ))}
-    </>
-  );
+  return <ProjectEntries items={contributions} />;
 }
 
 function PhotographyPanel() {
