@@ -107,23 +107,32 @@ html.dark .portfolio {
 
 .portfolio .pane-a {
   position: relative;
+}
+
+.portfolio .pane-a,
+.portfolio .photo-strip {
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--ink) 40%, transparent) transparent;
 }
 
-.portfolio .pane-a::-webkit-scrollbar {
+.portfolio .pane-a::-webkit-scrollbar,
+.portfolio .photo-strip::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
-.portfolio .pane-a::-webkit-scrollbar-track {
+.portfolio .pane-a::-webkit-scrollbar-track,
+.portfolio .photo-strip::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.portfolio .pane-a::-webkit-scrollbar-thumb {
+.portfolio .pane-a::-webkit-scrollbar-thumb,
+.portfolio .photo-strip::-webkit-scrollbar-thumb {
   background: color-mix(in srgb, var(--ink) 40%, transparent);
 }
 
-.portfolio .pane-a::-webkit-scrollbar-button {
+.portfolio .pane-a::-webkit-scrollbar-button,
+.portfolio .photo-strip::-webkit-scrollbar-button {
   display: none;
   width: 0;
   height: 0;
@@ -330,6 +339,134 @@ html.dark .portfolio {
   margin-bottom: 2.5em;
 }
 
+.portfolio .pane-b:has(.photo-viewer) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.portfolio .photo-viewer {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.85em;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio .photo-viewer header {
+  flex: none;
+  text-align: center;
+}
+
+.portfolio .photo-viewer h2 {
+  font-weight: 700;
+}
+
+.portfolio .photo-meta {
+  display: flex;
+  justify-content: center;
+  gap: 1.25em;
+  margin-top: 0.2em;
+}
+
+.portfolio .photo-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.portfolio .photo-stage img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-inline: 2.4em;
+  box-sizing: border-box;
+  object-fit: contain;
+  background: transparent;
+}
+
+.portfolio .photo-nav,
+.portfolio .photo-strip button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.portfolio .photo-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.2em;
+  height: 2.2em;
+  transform: translateY(-50%);
+}
+
+.portfolio .photo-nav.prev {
+  left: 0;
+}
+
+.portfolio .photo-nav.next {
+  right: 0;
+}
+
+.portfolio .photo-nav:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.portfolio .photo-nav svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.portfolio .photo-nav:focus-visible,
+.portfolio .photo-strip button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.portfolio .photo-strip {
+  display: flex;
+  flex: none;
+  justify-content: safe center;
+  gap: 0.4em;
+  overflow-x: auto;
+  padding: 0.2em 0.15em 0.45em;
+}
+
+.portfolio .photo-strip button {
+  flex: none;
+  width: 4.4em;
+  height: 4.4em;
+  background: var(--media-placeholder);
+}
+
+.portfolio .photo-strip button[aria-current='true'] {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.portfolio .photo-strip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .portfolio .lede:has(+ .resource-board) {
   margin-bottom: 1.5em;
 }
@@ -495,6 +632,19 @@ html.dark .portfolio {
   .portfolio .pane-b {
     min-height: 100dvh;
     padding-top: 0;
+  }
+
+  .portfolio .pane-b:has(.photo-viewer) {
+    display: block;
+    overflow: visible;
+  }
+
+  .portfolio .photo-viewer {
+    height: 100dvh;
+  }
+
+  .portfolio .photo-stage {
+    min-height: 50dvh;
   }
 
   .portfolio .entry {

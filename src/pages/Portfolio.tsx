@@ -3,8 +3,10 @@ import IdentityPane, {
   usePaneKeyboard,
   type PanelId,
 } from '@components/IdentityPane';
+import PhotoViewer from '@components/PhotoViewer';
 import ProjectMedia from '@components/ProjectMedia';
 import { trackEvent } from '@lib/analytics';
+import { photos } from '@lib/photos';
 import { contributions, projects, type Project } from '@lib/portfolio';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
@@ -72,7 +74,12 @@ function OpenSourcePanel() {
 }
 
 function PhotographyPanel() {
-  return <p className="lede">I haven&apos;t published photographs here yet.</p>;
+  if (photos.length === 0) {
+    return (
+      <p className="lede">I haven&apos;t published photographs here yet.</p>
+    );
+  }
+  return <PhotoViewer photos={photos} />;
 }
 
 function MeetingPanel() {
