@@ -71,12 +71,16 @@ export default function IdentityPane({ current }: { current: PanelId | null }) {
         <a href="/">Nasrul Huda</a>
       </h1>
       <p>
-        I’m an AI/ML Engineer based in Hamburg. Currently, I work at{' '}
+        I’m an AI/ML Engineer. I live in <mark>Hamburg, Germany</mark>.
+        Currently, I work at{' '}
         <a href="https://pharos-labs.com" rel="noreferrer">
           Pharos Labs
         </a>{' '}
-        and am pursuing a Master’s in Data Science and AI at Universität
-        Hamburg.
+        and am pursuing a Master’s in Data Science and AI at{' '}
+        <a href="https://www.uni-hamburg.de/" rel="noreferrer">
+          Universität Hamburg
+        </a>
+        .
       </p>
       <p>
         Alongside my studies, I've also worked as a Research Assistant at the
@@ -84,8 +88,7 @@ export default function IdentityPane({ current }: { current: PanelId | null }) {
         <a href="https://syntwin.ai" rel="noreferrer">
           SynTwin
         </a>
-        . I completed my Bachelor’s in Computer Science at Jamia Millia Islamia,
-        New Delhi.
+        .
       </p>
       <p>
         Find me on{' '}
