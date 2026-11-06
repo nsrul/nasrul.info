@@ -107,6 +107,26 @@ html.dark .portfolio {
 
 .portfolio .pane-a {
   position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--ink) 40%, transparent) transparent;
+}
+
+.portfolio .pane-a::-webkit-scrollbar {
+  width: 6px;
+}
+
+.portfolio .pane-a::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.portfolio .pane-a::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--ink) 40%, transparent);
+}
+
+.portfolio .pane-a::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .portfolio .pane-a h1 {
@@ -158,7 +178,8 @@ html.dark .portfolio {
 
 .portfolio p a,
 .portfolio p a:hover,
-.portfolio p a:active {
+.portfolio p a:active,
+.portfolio mark {
   color: var(--link);
   background-color: var(--link-highlight);
   text-decoration-color: var(--link);
@@ -260,7 +281,7 @@ html.dark .portfolio {
   display: block;
   width: 100%;
   aspect-ratio: 3 / 4;
-  margin-top: 2.5em;
+  margin-top: 1.25em;
   object-fit: cover;
   background: var(--media-placeholder);
   border: 0;
