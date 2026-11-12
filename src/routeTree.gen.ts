@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as MeetingRouteImport } from './routes/meeting'
 import { Route as OpenSourceRouteImport } from './routes/open-source'
 import { Route as PhotographyRouteImport } from './routes/photography'
@@ -20,6 +21,11 @@ import { Route as WritingRouteImport } from './routes/writing'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturedRoute = FeaturedRouteImport.update({
+  id: '/featured',
+  path: '/featured',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MeetingRoute = MeetingRouteImport.update({
@@ -55,6 +61,7 @@ const WritingRoute = WritingRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/featured': typeof FeaturedRoute
   '/meeting': typeof MeetingRoute
   '/open-source': typeof OpenSourceRoute
   '/photography': typeof PhotographyRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/featured': typeof FeaturedRoute
   '/meeting': typeof MeetingRoute
   '/open-source': typeof OpenSourceRoute
   '/photography': typeof PhotographyRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/featured': typeof FeaturedRoute
   '/meeting': typeof MeetingRoute
   '/open-source': typeof OpenSourceRoute
   '/photography': typeof PhotographyRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/featured'
     | '/meeting'
     | '/open-source'
     | '/photography'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/featured'
     | '/meeting'
     | '/open-source'
     | '/photography'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/featured'
     | '/meeting'
     | '/open-source'
     | '/photography'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FeaturedRoute: typeof FeaturedRoute
   MeetingRoute: typeof MeetingRoute
   OpenSourceRoute: typeof OpenSourceRoute
   PhotographyRoute: typeof PhotographyRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/featured': {
+      id: '/featured'
+      path: '/featured'
+      fullPath: '/featured'
+      preLoaderRoute: typeof FeaturedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/meeting': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FeaturedRoute: FeaturedRoute,
   MeetingRoute: MeetingRoute,
   OpenSourceRoute: OpenSourceRoute,
   PhotographyRoute: PhotographyRoute,

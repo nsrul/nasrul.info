@@ -1,4 +1,7 @@
-import IdentityPane, { usePaneKeyboard } from '@components/IdentityPane';
+import IdentityPane, {
+  SectionNav,
+  usePaneKeyboard,
+} from '@components/IdentityPane';
 import { resources } from '@data/resources';
 import { useRef } from 'react';
 
@@ -16,7 +19,8 @@ export default function Resources() {
 
   return (
     <div className="portfolio">
-      <IdentityPane current={null} />
+      <SectionNav current={null} />
+      <IdentityPane />
       <main aria-label="Resources" className="pane-b" ref={paneRef}>
         <p className="lede">
           Articles, essays, and videos that have shaped my thinking.

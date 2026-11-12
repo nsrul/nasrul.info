@@ -1,4 +1,6 @@
+import Eustoma from '@components/Eustoma';
 import IdentityPane, {
+  SectionNav,
   sections,
   usePaneKeyboard,
   type PanelId,
@@ -16,15 +18,22 @@ const CAL_NAMESPACE = 'home-meeting';
 
 export default function Portfolio({ panel }: { panel: PanelId }) {
   const paneRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const label = sections.find((section) => section.id === panel)?.label;
 
   usePaneKeyboard(paneRef);
 
   return (
     <div className="portfolio">
-      <IdentityPane current={panel} />
+      <SectionNav current={panel} ref={navRef} />
+      <IdentityPane />
 
-      <main aria-label={label} className="pane-b" ref={paneRef}>
+      <main
+        aria-label={label}
+        className={panel === 'about' ? 'pane-b pane-canvas' : 'pane-b'}
+        ref={paneRef}
+      >
+        {panel === 'about' ? <Eustoma avoid={navRef} /> : null}
         {panel === 'featured' ? <FeaturedPanel /> : null}
         {panel === 'writing' ? <WritingPanel /> : null}
         {panel === 'open-source' ? <OpenSourcePanel /> : null}

@@ -69,7 +69,8 @@ html.dark:has(.portfolio-shell) body {
   --fs: min(1.728vw, 1.728dvh);
 
   display: grid;
-  grid-template-columns: 25% minmax(0, 1fr);
+  grid-template-areas: 'identity main nav';
+  grid-template-columns: 25% minmax(0, 1fr) auto;
   height: 100%;
   overflow: hidden;
   background: var(--paper);
@@ -107,6 +108,11 @@ html.dark .portfolio {
 
 .portfolio .pane-a {
   position: relative;
+  grid-area: identity;
+}
+
+.portfolio .pane-b {
+  grid-area: main;
 }
 
 .portfolio .pane-a,
@@ -198,12 +204,23 @@ html.dark .portfolio {
   -webkit-box-decoration-break: clone;
 }
 
+/* The section links sit in the top-right corner, right-aligned. */
+.portfolio .site-nav {
+  position: relative;
+  z-index: 2;
+  grid-area: nav;
+  align-self: start;
+  padding: var(--pad) var(--pad) var(--pad) 0;
+  text-align: right;
+}
+
 .portfolio nav ul {
-  margin: 0 0 1.25em;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 0.35em;
 }
 
@@ -610,6 +627,98 @@ html.dark .portfolio {
   box-shadow: none;
 }
 
+/* About: the artwork fills the space right of the bio and runs under the
+   section links. It paints the page's own paper, so it has no edge. */
+.portfolio .pane-canvas {
+  position: relative;
+  grid-column: main-start / nav-end;
+  grid-row: 1;
+  padding: 0;
+  overflow: hidden;
+}
+
+.portfolio .eustoma {
+  --art-text: #453a50;
+  --art-focus: #7743ad;
+  --art-inset: max(var(--pad), 20px);
+
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--art-text);
+  font-family:
+    ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas,
+    'Liberation Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+html.dark .portfolio .eustoma {
+  --art-text: #b3b0bc;
+  --art-focus: #c2a2f0;
+}
+
+.portfolio .eustoma p {
+  margin: 0;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.portfolio .eustoma-stage {
+  position: absolute;
+  inset: 0;
+  cursor: crosshair;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.portfolio .eustoma-stage[data-dragging] {
+  cursor: grabbing;
+}
+
+.portfolio .eustoma-stage:focus {
+  outline: none;
+}
+
+.portfolio .eustoma-stage:focus-visible {
+  outline: 1px solid var(--art-focus);
+  outline-offset: -10px;
+}
+
+.portfolio .eustoma-flower,
+.portfolio .eustoma-annotations {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.portfolio .eustoma-caption {
+  position: absolute;
+  bottom: calc(var(--art-inset) + env(safe-area-inset-bottom));
+  left: var(--art-inset);
+}
+
+.portfolio .eustoma-message {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 32px;
+  color: var(--art-text);
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+  text-transform: none;
+}
+
 @media (max-width: 900px) {
   .portfolio-shell {
     height: auto;
@@ -637,6 +746,30 @@ html.dark .portfolio {
   .portfolio .pane-b:has(.photo-viewer) {
     display: block;
     overflow: visible;
+  }
+
+  .portfolio .site-nav {
+    padding: 16px 16px 0;
+  }
+
+  .portfolio .pane-canvas {
+    height: min(100svh, 150vw);
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Leave vertical swipes to the page so the flower never traps scrolling. */
+  .portfolio .eustoma-stage {
+    touch-action: pan-y;
+  }
+
+  /* The canvas is short here, so the label moves to the open paper above
+     the blossoms instead of sitting on the stems. */
+  .portfolio .eustoma-caption {
+    top: 16px;
+    bottom: auto;
+    left: 16px;
   }
 
   .portfolio .photo-viewer {

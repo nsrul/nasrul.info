@@ -1,7 +1,7 @@
 import { portrait } from '@lib/portfolio';
 import { Link } from '@tanstack/react-router';
 import { useTheme } from 'next-themes';
-import { useEffect, useState, type RefObject } from 'react';
+import { forwardRef, useEffect, useState, type RefObject } from 'react';
 
 const scrollKeys = new Set([
   'ArrowDown',
@@ -13,12 +13,14 @@ const scrollKeys = new Set([
   ' ',
 ]);
 
+// Listed top to bottom as they appear in the corner.
 export const sections = [
-  { id: 'featured', label: 'Featured', to: '/' },
-  { id: 'writing', label: 'Writing', to: '/writing' },
-  { id: 'open-source', label: 'Open source', to: '/open-source' },
-  { id: 'photography', label: 'Photography', to: '/photography' },
   { id: 'meeting', label: 'Book a meeting', to: '/meeting' },
+  { id: 'photography', label: 'Photography', to: '/photography' },
+  { id: 'open-source', label: 'Open source', to: '/open-source' },
+  { id: 'writing', label: 'Writing', to: '/writing' },
+  { id: 'featured', label: 'Featured', to: '/featured' },
+  { id: 'about', label: 'About', to: '/' },
 ] as const;
 
 export type PanelId = (typeof sections)[number]['id'];
@@ -29,6 +31,7 @@ export function usePaneKeyboard(paneRef: RefObject<HTMLElement | null>) {
     if (!pane) return;
 
     const onKey = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
       if (event.altKey || event.ctrlKey || event.metaKey) return;
       if (!scrollKeys.has(event.key)) return;
       if (window.matchMedia('(max-width: 900px)').matches) return;
@@ -63,7 +66,31 @@ export function usePaneKeyboard(paneRef: RefObject<HTMLElement | null>) {
   }, [paneRef]);
 }
 
-export default function IdentityPane({ current }: { current: PanelId | null }) {
+// The section links sit in the page's top-right corner, apart from the bio.
+export const SectionNav = forwardRef<
+  HTMLElement,
+  { current: PanelId | null }
+>(({ current }, ref) => {
+  return (
+    <nav aria-label="Sections" className="site-nav" ref={ref}>
+      <ul>
+        {sections.map((section) => (
+          <li key={section.id}>
+            <Link
+              aria-current={current === section.id ? 'page' : undefined}
+              to={section.to}
+            >
+              {section.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+});
+SectionNav.displayName = 'SectionNav';
+
+export default function IdentityPane() {
   return (
     <aside className="pane-a">
       <ThemeSwitch />
@@ -109,20 +136,6 @@ export default function IdentityPane({ current }: { current: PanelId | null }) {
         </a>{' '}
         or <a href="mailto:hi@nasrul.info">get in touch</a>.
       </p>
-      <nav aria-label="Sections">
-        <ul>
-          {sections.map((section) => (
-            <li key={section.id}>
-              <Link
-                aria-current={current === section.id ? 'page' : undefined}
-                to={section.to}
-              >
-                {section.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
       <p>
         <em>
           Last updated: <time dateTime="2026-11-01">1 November 2026</time>
