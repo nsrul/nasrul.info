@@ -1,12 +1,12 @@
 import Portfolio from '../pages/Portfolio';
 import { createFileRoute } from '@tanstack/react-router';
 
-function Home() {
-  return <Portfolio panel="featured" />;
+function About() {
+  return <Portfolio panel="about" />;
 }
 
 export const Route = createFileRoute('/')({
-  component: Home,
+  component: About,
   head: () => ({
     links: [
       {
