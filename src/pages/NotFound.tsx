@@ -4,8 +4,8 @@ import { Link } from '@tanstack/react-router';
 export default function NotFound() {
   return (
     <div className="portfolio">
-      <SectionNav current={null} />
       <IdentityPane />
+      <SectionNav current={null} />
       <main aria-label="Not found" className="pane-b">
         <p className="lede">
           The page you&apos;re looking for doesn&apos;t exist.

@@ -19,8 +19,8 @@ export default function Resources() {
 
   return (
     <div className="portfolio">
-      <SectionNav current={null} />
       <IdentityPane />
+      <SectionNav current={null} />
       <main aria-label="Resources" className="pane-b" ref={paneRef}>
         <p className="lede">
           Articles, essays, and videos that have shaped my thinking.

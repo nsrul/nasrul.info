@@ -66,7 +66,7 @@ html.dark:has(.portfolio-shell) body {
   --focus: #1a56ff;
   --pad: 1.95vw;
   /* Same size as jdhooge.com body copy: 1.2rem of a root tied to the short side. */
-  --fs: min(1.728vw, 1.728dvh);
+  --fs: clamp(0.9375rem, min(1.728vw, 1.728dvh), 1.375rem);
 
   display: grid;
   grid-template-areas: 'identity main nav';
@@ -239,6 +239,9 @@ html.dark .portfolio {
   color: inherit;
   background: none;
   text-decoration: none;
+  display: inline-block;
+  min-height: 24px;
+  line-height: 1.5;
   font-style: inherit;
   font-weight: 500;
   padding: 0;
@@ -267,6 +270,8 @@ html.dark .portfolio {
   place-items: center;
   width: 1.35em;
   height: 1.35em;
+  min-width: 24px;
+  min-height: 24px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -387,6 +392,7 @@ html.dark .portfolio {
   justify-content: center;
   gap: 1.25em;
   margin-top: 0.2em;
+  font-variant-numeric: tabular-nums;
 }
 
 .portfolio .photo-stage {
@@ -650,7 +656,7 @@ html.dark .portfolio {
   font-family:
     ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas,
     'Liberation Mono', monospace;
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.035em;
@@ -800,12 +806,12 @@ html.dark .portfolio .eustoma {
 /* Phone portrait and short landscape use the same boost as jdhooge.com. */
 @media (max-aspect-ratio: 4/5) {
   .portfolio {
-    --fs: min(3.97824vw, 3.97824dvh);
+    --fs: clamp(0.9375rem, min(3.97824vw, 3.97824dvh), 1.25rem);
   }
 }
 
 @media (min-aspect-ratio: 2/3) and (max-height: 500px) {
   .portfolio {
-    --fs: min(5.11488vw, 5.11488dvh);
+    --fs: clamp(0.9375rem, min(5.11488vw, 5.11488dvh), 1.375rem);
   }
 }

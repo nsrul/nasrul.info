@@ -95,7 +95,7 @@ const createLabels = (): Label[] => [
 ];
 
 const INK: Record<'dark' | 'light', { line: Rgba; text: Rgba }> = {
-  dark: { line: [153, 146, 171, 0.38], text: [193, 188, 200, 0.68] },
+  dark: { line: [153, 146, 171, 0.38], text: [193, 188, 200, 0.85] },
   light: { line: [105, 89, 123, 0.45], text: [84, 71, 103, 0.82] },
 };
 
@@ -557,13 +557,13 @@ export function createEustoma(options: Options): Eustoma | null {
       }
     }
 
-    ink.font = `9px ${MONO}`;
+    ink.font = `11px ${MONO}`;
     // Each label sits beside its blossom on the side away from the stem, so
     // it stays in open paper however the flower is turned. The side only
     // flips once the blossom is clearly across, so labels never flicker.
     const callout = (label: Label, text: string) => {
       const [px, py] = project(label.point);
-      if (px < 5 || px > width - 5 || py < 10 || py > height - 50) return;
+      if (px < 5 || px > width - 5 || py < 10 || py > height - 56) return;
       const center = place(label.around);
       const [cx] = toScreen(center);
       const [axis] = project([0, label.around[1], 0]);
@@ -579,7 +579,7 @@ export function createEustoma(options: Options): Eustoma | null {
         return;
       }
       const x0 = left ? tx - span : tx;
-      let ty = clamp(py + label.dy, 60, height - 85);
+      let ty = clamp(py + label.dy, 60, height - 96);
       if (
         avoid &&
         x0 + span > avoid.left &&
@@ -587,7 +587,7 @@ export function createEustoma(options: Options): Eustoma | null {
         ty + 6 > avoid.top &&
         ty - 12 < avoid.bottom
       ) {
-        ty = avoid.bottom + 22;
+        ty = avoid.bottom + 24;
       }
       ink.strokeStyle = rgba(colors.line, 1);
       ink.fillStyle = rgba(colors.text, 1);

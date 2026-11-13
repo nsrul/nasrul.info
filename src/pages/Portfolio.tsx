@@ -25,8 +25,8 @@ export default function Portfolio({ panel }: { panel: PanelId }) {
 
   return (
     <div className="portfolio">
-      <SectionNav current={panel} ref={navRef} />
       <IdentityPane />
+      <SectionNav current={panel} ref={navRef} />
 
       <main
         aria-label={label}
